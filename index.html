@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>a2crafts | Handmade Crafts</title>
+  <meta name="description" content="a2crafts — handmade crafts. Shop on Etsy and follow along on Instagram." />
+
+  <style>
+    :root{
+      --bg: #fff7fb;
+      --card: rgba(255,255,255,.86);
+      --ink: #2c1b25;
+      --muted: #6e4c5d;
+      --pink: #e9579a;
+      --pink-2:#ff8fc2;
+      --ring: rgba(233,87,154,.25);
+      --shadow: 0 12px 30px rgba(44,27,37,.10);
+      --radius: 18px;
+      --max: 1040px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(255,143,194,.30), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(233,87,154,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg), #ffffff);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* subtle floral pattern (no images needed) */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23e9579a' stroke-width='2' stroke-linecap='round' opacity='0.9'%3E%3Cpath d='M60 48c10 4 16 12 16 22 0 11-7 20-18 23-11 2-22-3-28-12'/%3E%3Cpath d='M62 48c-3 10-11 16-22 16-12 0-21-7-23-18-2-11 3-22 12-28'/%3E%3Cpath d='M60 48c-8-6-12-15-9-25 3-11 13-18 24-17 11 1 19 10 20 21'/%3E%3Cpath d='M60 48c-1-10 4-19 14-23 11-5 24-1 30 9 6 10 3 23-6 30'/%3E%3Ccircle cx='60' cy='48' r='4' fill='%23ff8fc2' stroke='none'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ff8fc2' stroke-width='1.6' opacity='0.8'%3E%3Cpath d='M172 168c8 3 13 10 13 18 0 9-6 16-14 18-9 2-18-2-23-10'/%3E%3Cpath d='M172 168c-2 8-9 13-18 13-10 0-17-6-18-14-2-9 2-18 10-23'/%3E%3Cpath d='M172 168c-7-5-10-12-8-20 2-9 10-14 19-13 9 1 15 8 16 17'/%3E%3Cpath d='M172 168c-1-8 3-15 11-19 9-4 19-1 24 7 5 8 3 18-5 24'/%3E%3Ccircle cx='172' cy='168' r='3.5' fill='%23e9579a' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 260px 260px;
+      background-repeat: repeat;
+      filter: blur(0.2px);
+    }
+
+    a { color: inherit; }
+    .wrap{
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 70px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 16px 4px 10px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
+
+    .logo{
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.6) 25%, transparent 40%),
+        linear-gradient(135deg, var(--pink), var(--pink-2));
+      box-shadow: 0 10px 20px rgba(233,87,154,.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .logo::after{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: radial-gradient(circle at 55% 55%, rgba(255,255,255,.55), transparent 60%);
+      transform: rotate(20deg);
+    }
+
+    .brand h1{
+      margin:0;
+      font-size: 1.2rem;
+      letter-spacing: .2px;
+    }
+    .brand p{
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    nav{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(233,87,154,.20);
+      box-shadow: 0 8px 16px rgba(44,27,37,.06);
+      text-decoration:none;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: .95rem;
+    }
+    .pill:focus{ outline: 4px solid var(--ring); outline-offset: 2px; }
+    .pill:hover{ transform: translateY(-1px); transition: transform .15s ease; }
+
+    .hero{
+      margin-top: 18px;
+      background: var(--card);
+      border: 1px solid rgba(233,87,154,.18);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 20px;
+    }
+
+    .hero h2{
+      margin: 0 0 10px;
+      font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+      line-height: 1.1;
+      letter-spacing: .2px;
+    }
+    .hero .lead{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(233,87,154,.25);
+      background: #fff;
+      text-decoration: none;
+      font-weight: 750;
+      box-shadow: 0 10px 18px rgba(44,27,37,.08);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--pink), var(--pink-2));
+      color: #fff;
+      border: 0;
+    }
+    .btn:hover{ transform: translateY(-1px); transition: transform .15s ease; }
+    .btn:focus{ outline: 4px solid var(--ring); outline-offset: 2px; }
+
+    .heroCard{
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(255,255,255,.75);
+      border: 1px dashed rgba(233,87,154,.25);
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .stat{
+      display:flex;
+      align-items:flex-start;
+      gap: 10px;
+    }
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--pink);
+      margin-top: 6px;
+      box-shadow: 0 0 0 6px rgba(233,87,154,.15);
+    }
+    .stat b{ display:block; }
+    .stat span{ color: var(--muted); font-size: .95rem; }
+
+    section{
+      margin-top: 22px;
+      background: var(--card);
+      border: 1px solid rgba(233,87,154,.16);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    section h3{
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      letter-spacing: .2px;
+    }
+    section p{
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+
+    figure{
+      margin:0;
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(233,87,154,.18);
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 10px 18px rgba(44,27,37,.06);
+      cursor: pointer;
+      position: relative;
+    }
+    figure img{
+      width:100%;
+      height: 100%;
+      display:block;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+    }
+    figure figcaption{
+      padding: 10px 12px;
+      font-size: .92rem;
+      color: var(--muted);
+    }
+
+    .span-4{ grid-column: span 4; }
+    .span-6{ grid-column: span 6; }
+
+    footer{
+      margin-top: 18px;
+      text-align:center;
+      color: var(--muted);
+      font-size: .92rem;
+      padding: 14px 0 0;
+    }
+
+    /* Lightbox */
+    dialog{
+      width: min(900px, calc(100% - 28px));
+      border: none;
+      border-radius: 18px;
+      padding: 0;
+      box-shadow: 0 30px 80px rgba(44,27,37,.35);
+      overflow: hidden;
+      background: #fff;
+    }
+    dialog::backdrop{
+      background: rgba(44,27,37,.55);
+      backdrop-filter: blur(3px);
+    }
+    .lightboxTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 12px 12px;
+      border-bottom: 1px solid rgba(233,87,154,.18);
+      background: linear-gradient(180deg, rgba(255,247,251,.8), rgba(255,255,255,.9));
+    }
+    .lightboxTitle{
+      font-weight: 800;
+      letter-spacing:.2px;
+      color: var(--ink);
+    }
+    .iconBtn{
+      appearance: none;
+      border: 1px solid rgba(233,87,154,.25);
+      background: #fff;
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .iconBtn:focus{ outline: 4px solid var(--ring); outline-offset: 2px; }
+    .lightboxBody img{
+      width: 100%;
+      height: auto;
+      display:block;
+      max-height: 72vh;
+      object-fit: contain;
+      background: #fff;
+    }
+    .lightboxCaption{
+      padding: 12px 14px 16px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 860px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px){
+      .span-6{ grid-column: span 12; }
+      .span-4{ grid-column: span 6; }
+    }
+    @media (max-width: 460px){
+      header{ flex-direction: column; align-items: flex-start; }
+      nav{ justify-content: flex-start; }
+      .span-4{ grid-column: span 12; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>a2crafts</h1>
+          <p>Handmade crafts • sweet details • made with love</p>
+        </div>
+      </div>
+
+      <nav aria-label="Primary">
+        <a class="pill" href="#gallery">Gallery</a>
+        <a class="pill" href="#links">Shop & Social</a>
+        <a class="pill" href="#about">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div>
+          <h2>Pretty, thoughtful crafts—made to gift and keep.</h2>
+          <p class="lead">
+            Welcome to <b>a2crafts</b> 💗 I make handcrafted pieces with a touch of pink and a sprinkle of floral charm.
+            Browse the gallery below, shop on Etsy, and follow along on Instagram for new drops and behind-the-scenes.
+          </p>
+
+          <div class="ctaRow" id="links">
+            <!-- TODO: replace the # links with your real URLs -->
+            <a class="btn primary" href="https://www.etsy.com/" target="_blank" rel="noopener">
+              🛍️ Visit my Etsy store
+            </a>
+            <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noopener">
+              🌸 Follow on Instagram
+            </a>
+          </div>
+        </div>
+
+        <aside class="heroCard" aria-label="Highlights">
+          <div class="stat">
+            <span class="dot" aria-hidden="true"></span>
+            <div>
+              <b>Custom-friendly</b>
+              <span>Message me on Etsy for colours, names, or tweaks.</span>
+            </div>
+          </div>
+          <div class="stat">
+            <span class="dot" aria-hidden="true"></span>
+            <div>
+              <b>New items often</b>
+              <span>Instagram is where I post fresh drops first.</span>
+            </div>
+          </div>
+          <div class="stat">
+            <span class="dot" aria-hidden="true"></span>
+            <div>
+              <b>Made in Australia</b>
+              <span>Carefully packed and posted with love.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <section id="gallery" aria-label="Gallery">
+        <h3>Gallery</h3>
+        <p>
+          Add your photos to a folder called <b>images/</b> in your repo, then update the <code>src</code> paths below.
+          Click any photo to enlarge.
+        </p>
+
+        <div class="gallery">
+          <!-- TODO: Replace these with your real images + captions -->
+          <figure class="span-6" data-full="images/item-1.jpg" data-caption="Example caption — handmade item #1">
+            <img src="images/item-1.jpg" alt="Handmade craft item 1" onerror="this.closest('figure').style.display='none';" />
+            <figcaption>Example caption — handmade item #1</figcaption>
+          </figure>
+
+          <figure class="span-6" data-full="images/item-2.jpg" data-caption="Example caption — handmade item #2">
+            <img src="images/item-2.jpg" alt="Handmade craft item 2" onerror="this.closest('figure').style.display='none';" />
+            <figcaption>Example caption — handmade item #2</figcaption>
+          </figure>
+
+          <figure class="span-4" data-full="images/item-3.jpg" data-caption="Example caption — handmade item #3">
+            <img src="images/item-3.jpg" alt="Handmade craft item 3" onerror="this.closest('figure').style.display='none';" />
+            <figcaption>Example caption — handmade item #3</figcaption>
+          </figure>
+
+          <figure class="span-4" data-full="images/item-4.jpg" data-caption="Example caption — handmade item #4">
+            <img src="images/item-4.jpg" alt="Handmade craft item 4" onerror="this.closest('figure').style.display='none';" />
+            <figcaption>Example caption — handmade item #4</figcaption>
+          </figure>
+
+          <figure class="span-4" data-full="images/item-5.jpg" data-caption="Example caption — handmade item #5">
+            <img src="images/item-5.jpg" alt="Handmade craft item 5" onerror="this.closest('figure').style.display='none';" />
+            <figcaption>Example caption — handmade item #5</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="about" aria-label="About a2crafts">
+        <h3>About a2crafts</h3>
+        <p>
+          <!-- TODO: Replace with your own bio -->
+          Hi! I’m the maker behind a2crafts. I love creating sweet, giftable pieces with soft pink tones and floral touches.
+          Thanks for supporting handmade 💗
+        </p>
+
+        <div class="ctaRow">
+          <!-- TODO: Put your real links here -->
+          <a class="btn primary" href="https://www.etsy.com/" target="_blank" rel="noopener">Shop on Etsy</a>
+          <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> a2crafts • Made with love
+      </footer>
+    </main>
+  </div>
+
+  <!-- Lightbox -->
+  <dialog id="lightbox" aria-label="Image preview">
+    <div class="lightboxTop">
+      <div class="lightboxTitle" id="lightboxTitle">Preview</div>
+      <button class="iconBtn" id="closeLightbox" aria-label="Close">✕</button>
+    </div>
+    <div class="lightboxBody">
+      <img id="lightboxImg" alt="" />
+    </div>
+    <div class="lightboxCaption" id="lightboxCaption"></div>
+  </dialog>
+
+  <script>
+    // Auto year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Simple lightbox
+    const dialog = document.getElementById("lightbox");
+    const imgEl = document.getElementById("lightboxImg");
+    const capEl = document.getElementById("lightboxCaption");
+    const titleEl = document.getElementById("lightboxTitle");
+
+    document.querySelectorAll("figure[data-full]").forEach(fig => {
+      fig.addEventListener("click", () => {
+        const full = fig.getAttribute("data-full");
+        const caption = fig.getAttribute("data-caption") || "";
+        const alt = fig.querySelector("img")?.getAttribute("alt") || "Craft image";
+
+        imgEl.src = full;
+        imgEl.alt = alt;
+        capEl.textContent = caption;
+        titleEl.textContent = "Preview";
+
+        if (typeof dialog.showModal === "function") dialog.showModal();
+      });
+    });
+
+    document.getElementById("closeLightbox").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (e) => {
+      // close if clicked on backdrop area
+      const rect = dialog.getBoundingClientRect();
+      const inDialog =
+        e.clientX >= rect.left && e.clientX <= rect.right &&
+        e.clientY >= rect.top && e.clientY <= rect.bottom;
+      if (!inDialog) dialog.close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && dialog.open) dialog.close();
+    });
+  </script>
+</body>
+</html>
